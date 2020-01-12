@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Spring Rest Demo</title>
@@ -13,5 +14,6 @@
 <body>
 <h2>Spring Rest Demo</h2>
 <hr>
+<a href="${pageContext.request.contextPath}/test/hello">Hello</a>
 </body>
 </html>
