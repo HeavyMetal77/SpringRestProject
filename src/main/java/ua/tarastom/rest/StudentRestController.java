@@ -36,27 +36,4 @@ public class StudentRestController {
         }
         return theStudents.get(studentId);
     }
-
-    @ExceptionHandler
-    public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException studentNFE) {
-        StudentErrorResponse studentErrorResponse = new StudentErrorResponse();
-
-        studentErrorResponse.setStatus(HttpStatus.NOT_FOUND.value());
-        studentErrorResponse.setMessage(studentNFE.getMessage());
-        studentErrorResponse.setTimestamp(System.currentTimeMillis());
-
-        return new ResponseEntity<>(studentErrorResponse, HttpStatus.NOT_FOUND);
-    }
-
-    //для любых других исключений - ошибка 400
-    @ExceptionHandler
-    public ResponseEntity<StudentErrorResponse> handleException(Exception theAnyException) {
-        StudentErrorResponse studentErrorResponse = new StudentErrorResponse();
-
-        studentErrorResponse.setStatus(HttpStatus.BAD_REQUEST.value());
-        studentErrorResponse.setMessage(theAnyException.getMessage());
-        studentErrorResponse.setTimestamp(System.currentTimeMillis());
-
-        return new ResponseEntity<>(studentErrorResponse, HttpStatus.BAD_REQUEST);
-    }
 }
